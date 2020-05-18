@@ -5,12 +5,19 @@ conf t
 host R1
 
 int g0/0
-ip addr 192.168.10.1
+ip addr 192.168.10.1 255.255.255.248
 no shut
 
 int g0/1
 ip addr 192.168.1.1 255.255.255.0
 no shut
+
+!EIGRP R1
+router eigrp 1
+network 192.168.1.1 0.0.0.255
+network 192.168.10.0 0.0.0.7
+passive-interface g0/1
+no auto-summary
 
 
 
@@ -20,11 +27,20 @@ en
 conf t
 host R2
 
+int g0/0
+ip addr 192.168.10.2 255.255.255.248
+no shut
+
 int g0/1
 ip addr 192.168.2.1 255.255.255.0
 no shut
 
-
+!EIGRP R2
+router eigrp 1
+network 192.168.2.1 0.0.0.255
+network 192.168.10.0 0.0.0.7
+passive-interface g0/1
+no auto-summary
 
 !-------------
 !---Router R3
@@ -32,11 +48,20 @@ en
 conf t
 host R3
 
+int g0/0
+ip addr 192.168.10.3 255.255.255.248
+no shut
+
 int g0/1
 ip addr 192.168.3.1 255.255.255.0
 no shut
 
-
+!EIGRP R3
+router eigrp 1
+network 192.168.3.1 0.0.0.255
+network 192.168.10.0 0.0.0.7
+passive-interface g0/1
+no auto-summary
 
 !-------------
 !---Router R4
