@@ -1,0 +1,91 @@
+!-------------
+!---Router R1
+en
+conf t
+host R1
+
+int g0/1
+ip addr 192.168.1.1 255.255.255.0
+no shut
+
+
+
+!-------------
+!---Router R2
+en
+conf t
+host R2
+
+int g0/1
+ip addr 192.168.2.1 255.255.255.0
+no shut
+
+
+
+!-------------
+!---Router R3
+en
+conf t
+host R3
+
+int g0/1
+ip addr 192.168.3.1 255.255.255.0
+no shut
+
+
+
+!-------------
+!---Router R4
+en
+conf t
+host R4
+
+int g0/1
+ip addr 192.168.4.1 255.255.255.0
+no shut
+
+
+
+!-------------
+!---Router R5
+en
+conf t
+host R5
+
+int g0/1
+ip addr 192.168.5.1 255.255.255.0
+no shut
+
+
+
+!-------------
+!---Router R6
+en
+conf t
+host R6
+
+!//mask /24
+int g0/0
+ip addr 192.168.10.11 255.255.255.248
+no shut
+
+!/Mask /30
+int g0/1
+ip addr 192.168.10.17 255.255.255.252
+no shut
+
+
+!-------------
+!---Router R7
+en
+conf t
+host R7
+
+int g0/0
+ip addr 192.168.10.18 255.255.255.252
+no shut
+
+
+int g0/1
+ip addr 192.168.7.1 255.255.255.0
+no shut
