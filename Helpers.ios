@@ -1,0 +1,53 @@
+!Configuración Inicial
+en
+conf t
+host RX
+
+!Muardar los cambios
+write
+
+!Mostrar interfaces
+sh ip int br
+
+!Mostrar la tabla de enrutamiento
+sh ip route
+
+!Mostrar los parametros de enrutamiento
+show ip protocols
+
+!Mostrar configuración en ejecución
+sh running-config
+
+!Inicializar EIGRP
+router eigrp 1
+
+!Networks EIGRP
+network <ip addr> <wildcard>
+
+!Mostrar vecinos EIGRP
+sh ip EIGRP neighbors
+
+!Mostrar la tabla de enrutamiento de EIGRP
+show ip route eigrp
+
+!Deshabilitar el DNS domain-lookup
+no ip domain-lookup
+
+!Mostrar parametros de Interfaz
+int s0/0/0
+#show interface s0/0/0
+
+!inicializar ospf
+router ospf 1
+
+!Networks EIGRP
+network <ip addr> <wildcard> AREA <Number Area>
+
+!Compartir redes adyacentes
+default-information originate
+
+!Mostrar información OSFP
+show ip ospf
+
+!Mostrar vecinos OSPF
+show ip ospf neighbor
