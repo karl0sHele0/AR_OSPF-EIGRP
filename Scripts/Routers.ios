@@ -125,6 +125,8 @@ router ospf 1
 !Área de intercambio
 network 192.168.10.16 0.0.0.3 area 1
 network 192.168.10.8 0.0.0.7 area 0
+!Compartir Networks OSPF Área 0 con Área 1
+default-information originate
 
 
 
@@ -142,3 +144,9 @@ no shut
 int g0/1
 ip addr 192.168.7.1 255.255.255.0
 no shut
+
+!OSPF R6
+router ospf 1
+!Área de intercambio
+network 192.168.10.16 0.0.0.3 area 1
+network 192.168.7.0 0.0.0.255 area 1
