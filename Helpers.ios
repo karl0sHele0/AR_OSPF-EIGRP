@@ -3,7 +3,7 @@ en
 conf t
 host RX
 
-!Muardar los cambios
+!Guardar los cambios
 write
 
 !Mostrar interfaces
@@ -43,7 +43,7 @@ router ospf 1
 !Networks EIGRP
 network <ip addr> <wildcard> AREA <Number Area>
 
-!Compartir redes adyacentes
+!Compartir redes adyacentes OSPF
 default-information originate
 
 !Mostrar información OSFP
