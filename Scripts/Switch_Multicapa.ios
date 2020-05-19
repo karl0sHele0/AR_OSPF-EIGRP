@@ -17,6 +17,23 @@ no sw
 ip addr 192.168.10.12 255.255.255.248
 no shut
 
+!Link Default Router
+int g1/0/3
+no sw
+ip addr 192.168.10.21 255.255.255.248
+no shut
+
+!Route to Default Router
+ip route 0.0.0.0 0.0.0.0 192.168.10.22
+
+!Enable ip routing
+ip routing
+
 !EIGRP on g1/0/1
 router eigrp 1
-network 
+network 192.168.10.0 0.0.0.7
+passive-interface g1/0/2
+passive-interface g1/0/3
+
+!Distribuir las rutas estaticas con EIGRP 0.0.0.0 / 0
+redistribute static
