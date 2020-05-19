@@ -14,7 +14,7 @@ no shut
 
 !EIGRP R1
 router eigrp 1
-network 192.168.1.1 0.0.0.255
+network 192.168.1.0 0.0.0.255
 network 192.168.10.0 0.0.0.7
 passive-interface g0/1
 no auto-summary
@@ -37,7 +37,7 @@ no shut
 
 !EIGRP R2
 router eigrp 1
-network 192.168.2.1 0.0.0.255
+network 192.168.2.0 0.0.0.255
 network 192.168.10.0 0.0.0.7
 passive-interface g0/1
 no auto-summary
@@ -58,7 +58,7 @@ no shut
 
 !EIGRP R3
 router eigrp 1
-network 192.168.3.1 0.0.0.255
+network 192.168.3.0 0.0.0.255
 network 192.168.10.0 0.0.0.7
 passive-interface g0/1
 no auto-summary
@@ -69,10 +69,19 @@ en
 conf t
 host R4
 
+int g0/0
+ip addr 192.168.10.9 255.255.255.248
+no shut
+
 int g0/1
 ip addr 192.168.4.1 255.255.255.0
 no shut
 
+!OSPF R4
+router ospf 1
+network 192.168.4.0 0.0.0.255 area 0
+network 192.168.10.8 0.0.0.7 area 0
+passive-interface g0/1
 
 
 !-------------
@@ -81,11 +90,19 @@ en
 conf t
 host R5
 
+int g0/0
+ip addr 192.168.10.10 255.255.255.248
+no shut
+
 int g0/1
 ip addr 192.168.5.1 255.255.255.0
 no shut
 
-
+!OSPF R5
+router ospf 1
+network 192.168.5.0 0.0.0.255 area 0
+network 192.168.10.8 0.0.0.7 area 0
+passive-interface g0/1
 
 !-------------
 !---Router R6
@@ -102,6 +119,13 @@ no shut
 int g0/1
 ip addr 192.168.10.17 255.255.255.252
 no shut
+
+!OSPF R6
+router ospf 1
+!Área de intercambio
+network 192.168.10.16 0.0.0.3 area 1
+network 192.168.10.8 0.0.0.7 area 0
+
 
 
 !-------------
