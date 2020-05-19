@@ -5,7 +5,12 @@ en
 conf t
 host R8
 
+!Link G0/0 ip 192.168.10.20 / 30
 int g0/0
 ip addr 192.168.10.22 255.255.255.252
 no shut
+
+!Create Loopback
+int loopback 0
+ip addr 1.1.1.1 255.255.255.255
 
